@@ -8,7 +8,8 @@
     "scheme": "homepulse",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon/Assets/expo-symbol 2.svg"
+      "icon": "./assets/expo.icon/Assets/expo-symbol 2.svg",
+      "bundleIdentifier": "com.anonymous.HomePulse"
     },
     "android": {
       "adaptiveIcon": {
@@ -37,7 +38,8 @@
             "imageWidth": 76
           }
         }
-      ]
+      ],
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,
