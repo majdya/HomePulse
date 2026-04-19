@@ -1,23 +1,42 @@
-import { Text, View } from "react-native";
+import { useGroceryStore } from "@/store/grocery-store";
+import { ScrollView, Text, View } from "react-native";
 
-// import PendingItemCard from "@/components/list/PendingItemCard";
-// import { useGroceryStore } from "@/store/grocery-store";
+import PendingItemCard from "@/components/list/PendingItemCard";
 
-// import CompletedItems from "@/components/list/CompletedItems";
-// import ListHeroCard from "@/components/list/ListHeroCard";
-// import TabScreenBackground from "@/components/TabScreenBackground";
+import CompletedItems from "@/components/list/CompletedItems";
+import ListHeroCard from "@/components/list/ListHeroCard";
+import TabScreenBackground from "@/components/TabScreenBackground";
 
 export default function ListScreen() {
-  // const { items } = useGroceryStore();
+  const { items } = useGroceryStore();
 
-  // const pendingItems = items.filter((item) => !item.purchased);
+  const pendingItems = items.filter((item) => !item.purchased);
 
   return (
-    <View className="flex-row items-center justify-between px-1">
-      <Text className="text-sm font-semibold uppercase tracking-[1px] text-muted-foreground">
-        Shopping items
-      </Text>
-    </View>
+    <ScrollView
+      className="flex-1 bg-background py-4"
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{ padding: 20, gap: 14 }}
+    >
+      <TabScreenBackground />
+
+      <ListHeroCard />
+
+      <View className="flex-row items-center justify-between px-1">
+        <Text className="text-sm font-semibold uppercase tracking-[1px] text-muted-foreground">
+          Shopping items
+        </Text>
+        <Text className="text-sm text-muted-foreground">
+          {pendingItems.length} active
+        </Text>
+      </View>
+
+      {pendingItems.map((item) => (
+        <PendingItemCard key={item.id} item={item} />
+      ))}
+
+      <CompletedItems />
+    </ScrollView>
     // <FlatList
     //   className="flex-1 bg-background "
     //   data={pendingItems}
