@@ -23,7 +23,6 @@ const InsightsScreen = () => {
         <InsightsPrioritySection />
         <ClearCompletedButton />
       </ScrollView>
-
       <SentryFeedbackButton />
     </>
   );
